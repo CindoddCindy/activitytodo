@@ -2,12 +2,15 @@ package com.activitytodo.activitytodo.services;
 
 import com.activitytodo.activitytodo.model.Todo;
 import com.activitytodo.activitytodo.repository.TodoRepository;
+import com.activitytodo.activitytodo.response.ResponseDelete;
 import com.activitytodo.activitytodo.response.TodoRequest;
 import com.activitytodo.activitytodo.response.TodoResponse;
 import com.activitytodo.activitytodo.response.TodoResponseOne;
 import com.activitytodo.activitytodo.response.TodoResponseUpdate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -64,12 +67,14 @@ public class TodoServices {
         .build();
   }
 
-  public  TodoResponseUpdate deleteTodo(Long id) {
-    Todo todo = todoRepository.deleteTodoById(id);
-    return TodoResponseUpdate.builder()
+  public ResponseDelete deleteTodo(Long id) {
+    List<String> strings = new ArrayList<>();
+    Todo todo = new Todo();
+     todoRepository.deleteById(id);
+    return ResponseDelete.builder()
         .status("Success")
         .message("Sucess")
-        .data(todo)
+        .data(strings)
         .build();
   }
 

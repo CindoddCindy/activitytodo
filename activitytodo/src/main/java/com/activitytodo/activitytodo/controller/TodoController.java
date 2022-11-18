@@ -2,6 +2,7 @@ package com.activitytodo.activitytodo.controller;
 
 import com.activitytodo.activitytodo.model.Todo;
 import com.activitytodo.activitytodo.repository.TodoRepository;
+import com.activitytodo.activitytodo.response.ResponseDelete;
 import com.activitytodo.activitytodo.response.TodoRequest;
 import com.activitytodo.activitytodo.response.TodoResponse;
 import com.activitytodo.activitytodo.response.TodoResponseOne;
@@ -45,7 +46,7 @@ public class TodoController {
   }
 
   @DeleteMapping("/todo-items/{id}")
-  public  TodoResponseUpdate deleteTodoController(@PathVariable("id") Long id) {
+  public ResponseDelete deleteTodoController(@PathVariable("id") Long id) {
     return todoServices.deleteTodo(id);
   }
 

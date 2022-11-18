@@ -14,6 +14,4 @@ public interface TodoRepository extends JpaRepository<Todo,Long> {
 
   Todo getTodoById(Long id);
 
-  Todo deleteTodoById(Long todo);
-
 }

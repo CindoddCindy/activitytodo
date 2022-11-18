@@ -5,8 +5,11 @@ import com.activitytodo.activitytodo.repository.ActivityRepository;
 import com.activitytodo.activitytodo.response.ActivityRequest;
 import com.activitytodo.activitytodo.response.ActivityResponse;
 import com.activitytodo.activitytodo.response.ActivityResponseOne;
+import com.activitytodo.activitytodo.response.ResponseDelete;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Service
@@ -18,7 +21,7 @@ public class ActivityServices {
   public ActivityResponseOne createActivity(ActivityRequest activityRequest) {
     Activity activity = new Activity();
     activity.setEmail(activityRequest.getEmail());
-    activity.setTitle(activity.getTitle());
+    activity.setTitle(activityRequest.getTitle());
     activityRepository.save(activity);
 
     return ActivityResponseOne.builder()
@@ -59,16 +62,14 @@ public class ActivityServices {
         .build();
   }
 
-  public ActivityResponseOne deleteActivity(Long id) {
-    Activity activity = activityRepository.getActivityById(id);
-    activity.getEmail();
-    activity.getTitle();
-    Activity activity1 = activityRepository.deleteActivityById(activity);
+  public ResponseDelete deleteActivity(Long id) {
+    List<String> strings = new ArrayList<>();
+    activityRepository.deleteById(id);
 
-    return ActivityResponseOne.builder()
+    return ResponseDelete.builder()
         .status("Success")
         .message("Sucess")
-        .data(activity1)
+        .data(strings)
         .build();
   }
 }

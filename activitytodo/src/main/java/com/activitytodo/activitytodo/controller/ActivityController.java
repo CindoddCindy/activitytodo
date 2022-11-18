@@ -4,6 +4,7 @@ import com.activitytodo.activitytodo.model.Activity;
 import com.activitytodo.activitytodo.response.ActivityRequest;
 import com.activitytodo.activitytodo.response.ActivityResponse;
 import com.activitytodo.activitytodo.response.ActivityResponseOne;
+import com.activitytodo.activitytodo.response.ResponseDelete;
 import com.activitytodo.activitytodo.services.ActivityServices;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -42,7 +43,7 @@ public class ActivityController {
   }
 
   @DeleteMapping("/activity-groups/{id}")
-  public ActivityResponseOne deleteActivityController(@PathVariable("id") Long id) {
+  public ResponseDelete deleteActivityController(@PathVariable("id") Long id) {
     return activityServices.deleteActivity(id);
   }
 
