@@ -11,7 +11,6 @@ import java.util.List;
 
 @Repository
 public interface TodoRepository extends JpaRepository<Todo,Long> {
-  Todo createTodo(TodoRequest todoRequest);
 
   Todo getTodoById(Long id);
 

@@ -9,7 +9,6 @@ import java.util.List;
 
 @Repository
 public interface ActivityRepository extends JpaRepository<Activity,Long> {
-  Activity createActivity(ActivityRequest activityRequest);
 
   Activity getActivityById(Long id);
 

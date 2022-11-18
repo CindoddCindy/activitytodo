@@ -21,27 +21,27 @@ public class ActivityController {
   @Autowired
   ActivityServices activityServices;
 
-@PostMapping("/")
+@PostMapping("/activity-groups")
   public ActivityResponseOne createActivityController( @RequestBody ActivityRequest activityRequest) {
     return activityServices.createActivity(activityRequest);
   }
 
-  @GetMapping("/")
+  @GetMapping("/activity-groups")
   public ActivityResponse getAllActivityController() {
         return activityServices.getAllActivity();
   }
 
-  @GetMapping("/")
-  public ActivityResponseOne getOneController(Long id) {
+  @GetMapping("/activity-groups/{id}")
+  public ActivityResponseOne getOneController(@PathVariable("id") Long id) {
     return activityServices.getOne(id);
   }
 
-  @PutMapping("/")
+  @PutMapping("/activity-groups/{id}")
   public ActivityResponseOne updateActivityController(@PathVariable("id") Long id, @RequestBody ActivityRequest activityRequest) {
     return activityServices.updateActivity(id,activityRequest);
   }
 
-  @DeleteMapping("/")
+  @DeleteMapping("/activity-groups/{id}")
   public ActivityResponseOne deleteActivityController(@PathVariable("id") Long id) {
     return activityServices.deleteActivity(id);
   }

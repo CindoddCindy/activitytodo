@@ -24,27 +24,27 @@ public class TodoController {
   @Autowired
   TodoServices todoServices;
 
-  @PostMapping("/")
+  @PostMapping("/todo-items")
   public TodoResponseUpdate createTodoController( @RequestBody TodoRequest todoRequest) {
     return todoServices.createTodo(todoRequest);
   }
 
-  @GetMapping("/")
+  @GetMapping("/todo-items")
   public TodoResponse getAllTodoController() {
     return todoServices.getAllTodo();
   }
 
-  @GetMapping("/")
+  @GetMapping("/todo-items/{id}")
   public TodoResponseOne getOneController(@PathVariable("id") Long id) {
     return todoServices.getOne(id);
   }
 
- @PutMapping("/")
+ @PutMapping("/todo-items/{id}")
   public TodoResponseUpdate updateTodoController(@PathVariable("id") Long id, @RequestBody TodoRequest todoRequest) {
     return todoServices.updateTodo(id,todoRequest);
   }
 
-  @DeleteMapping("/")
+  @DeleteMapping("/todo-items/{id}")
   public  TodoResponseUpdate deleteTodoController(@PathVariable("id") Long id) {
     return todoServices.deleteTodo(id);
   }

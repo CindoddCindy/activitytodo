@@ -18,17 +18,16 @@ public class TodoServices {
   TodoRepository todoRepository;
 
   public TodoResponseUpdate createTodo(TodoRequest todoRequest) {
-    Todo todos = todoRepository.createTodo(todoRequest);
+    Todo todos = new Todo();
     todos.setActivity_group_id(todoRequest.getActivity_group_id());
     todos.setTitle(todoRequest.getTitle());
     todos.setIs_active(todoRequest.getIs_active());
     todos.setPriority(todoRequest.getPriority());
-    Todo todoSave = new Todo();
-    todoSave = todoRepository.save(todos);
+     todoRepository.save(todos);
     return TodoResponseUpdate.builder()
         .status("Success")
         .message("Sucess")
-        .data(todoSave)
+        .data(todos)
         .build();
   }
 

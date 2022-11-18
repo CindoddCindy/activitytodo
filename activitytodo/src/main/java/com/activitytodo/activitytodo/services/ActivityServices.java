@@ -16,16 +16,15 @@ public class ActivityServices {
   ActivityRepository activityRepository;
 
   public ActivityResponseOne createActivity(ActivityRequest activityRequest) {
-    Activity activity = activityRepository.createActivity(activityRequest);
-    Activity activity1 = new Activity();
+    Activity activity = new Activity();
     activity.setEmail(activityRequest.getEmail());
     activity.setTitle(activity.getTitle());
-    activity1=activityRepository.save(activity);
+    activityRepository.save(activity);
 
     return ActivityResponseOne.builder()
         .status("Success")
         .message("Sucess")
-        .data(activity1)
+        .data(activity)
         .build();
   }
 
